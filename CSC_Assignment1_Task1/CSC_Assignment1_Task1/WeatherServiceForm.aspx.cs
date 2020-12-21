@@ -23,7 +23,7 @@ namespace CSC_Assignment1_Task1
 
             url.Host = "api.data.gov.sg";
             url.Path = "v1/environment/24-hour-weather-forecast";
-            url.Query = "date=2020-12-21";
+            //url.Query = "date=2020-12-21";
 
             ////HTTP request to Singapore NEA 24-hour Weather Forecast web service
             JsonDocument wsResponseJsonDoc = MakeRequest(url.ToString());
