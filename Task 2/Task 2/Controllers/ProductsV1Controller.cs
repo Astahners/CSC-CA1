@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Task_2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using Task_2.Models;
+using System.Web.Http.Cors;
 
 namespace Task_2.Controllers
 {
@@ -12,7 +13,7 @@ namespace Task_2.Controllers
     public class ProductsController : ApiController
     {
         // static readonly IProductRepository repository = new ProductRepository();
-        private Product[] products = new Product[]
+        Product[] products = new Product[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
             new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
@@ -56,7 +57,7 @@ namespace Task_2.Controllers
         }
 
         [HttpGet]
-        [Route("api/v1/products/{id:int:min(2)}")]
+        [Route("api/v1/products/id")]
         //http://localhost:9000/api/v1/products/3
         public IHttpActionResult GetProduct(int id)
         {

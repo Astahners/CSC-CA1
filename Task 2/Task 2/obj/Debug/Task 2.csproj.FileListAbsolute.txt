@@ -83,3 +83,6 @@ C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\obj\Debug\Task 2.csproj.Co
 C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\obj\Debug\Task 2.csproj.CopyComplete
 C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\obj\Debug\Task 2.dll
 C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\obj\Debug\Task 2.pdb
+C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\bin\System.Web.Cors.dll
+C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\bin\System.Web.Http.Cors.dll
+C:\Users\User\Documents\CSC CA1\CSC CA1\Task 2\Task 2\bin\System.Web.Http.Cors.xml
