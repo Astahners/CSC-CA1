@@ -14,8 +14,6 @@ namespace CSC_Assignment1_Task1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            XmlDocument wsResponseXmlDoc = new XmlDocument();
-
             //https://api.data.gov.sg/v1/environment/24-hour-weather-forecast
 
             UriBuilder url = new UriBuilder();

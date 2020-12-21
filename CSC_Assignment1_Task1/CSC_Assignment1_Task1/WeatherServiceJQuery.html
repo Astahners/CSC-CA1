@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Singapore 24-Hour Weather Forecast</title>
+</head>
+<body>
+    <button onclick="invokeApi()" id="invokeApi">Get Weather Forecast</button>
+    <p id="content"></p>
+</body>
+</html>
+<script src="Scripts/jquery-3.3.1.js"></script>
+<script>
+    let host = 'https://api.data.gov.sg'
+    let path = 'v1/environment/24-hour-weather-forecast'
+    const invokeApi = () => {
+        $.ajax({
+            url: host + "/" + path,
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (result) {
+                console.log(result)
+                $("#content").text(JSON.stringify(result))
+            }
+        })
+    } 
+</script>
