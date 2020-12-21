@@ -1,10 +1,10 @@
-﻿using Task_2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using Task_2.Models;
 
 namespace Task_2.Controllers
 {
@@ -12,7 +12,7 @@ namespace Task_2.Controllers
     public class ProductsController : ApiController
     {
         // static readonly IProductRepository repository = new ProductRepository();
-        Product[] products = new Product[]
+        private Product[] products = new Product[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
             new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
