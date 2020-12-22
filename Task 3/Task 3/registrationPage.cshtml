@@ -1,0 +1,66 @@
+﻿@section Scripts{
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p', { action: 'homepage' }).then(function (token) {
+                document.getElementById("foo").value = token;
+            });
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: 'api/recaptcha',
+            contentType: 'application/x-www-urlencoded',
+            data: recaptchaData
+        }).done(function (data, textStatus, jqXHR) {
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                url: 'api/Account/Register',
+                contentType: 'application/json; charset-utf-8',
+                data: JSON.stringify(accountCredentials)
+            }).done(function (data) {
+                $('.input', '#dataForm')
+                    .not(':button, :submit, :reset, :hidden')
+                    .val('')
+            })
+        })
+    </script>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration with reCaptcha v3</title>
+</head>
+<body>
+    <div>
+        <form data-bind="submit: register" id="dataForm">
+            <h3>Register</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" data-bind="value: inEmail" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="password" data-bind="value: inPassword" />
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input class="form-control" type="password" data-bind="value: inPassword2" />
+            </div>
+            <div class="form-group">
+                <button class="g-recaptcha"
+                        data-sitekey="6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p"
+                        data-callback='onSubmit'
+                        data-action='submit'>
+                        Register
+                </button>
+            </div>
+            <input type="hidden" id="foo" name="foo" />
+        </form>
+    </div>
+</body>
+</html>
