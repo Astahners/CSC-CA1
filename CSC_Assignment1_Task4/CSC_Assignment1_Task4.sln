@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSC_Assignment1_Task4", "CSC_Assignment1_Task4\CSC_Assignment1_Task4.csproj", "{A39B7393-21A0-4D1F-8D36-80761B0E4C62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSC_Assignment1_Task4_TalentSearch", "CSC_Assignment1_Task4\CSC_Assignment1_Task4_TalentSearch.csproj", "{A39B7393-21A0-4D1F-8D36-80761B0E4C62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
