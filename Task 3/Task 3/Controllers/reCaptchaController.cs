@@ -15,9 +15,14 @@ namespace Task_3.Controllers
         [Route("api/recaptcha")]
         public HttpResponseMessage checkRecaptcha(reCaptcha model)
         {
-            if (ModelState.IsValid)
+            if (!ReCaptchaPassed(model.captcha))
             {
-
+                ModelState.AddModelError(string.Empty, "You failed the CAPTCHA.");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "You failed the Captcha.");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "You passed the captcha.");
             }
         }
 
@@ -25,7 +30,7 @@ namespace Task_3.Controllers
         {
             HttpClient httpClient = new HttpClient();
 
-            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6Ld3HBAaAAAAAIc-T0fQ6Mkvb0njP3oNWPPC_68w&response={gRecaptcharesponse}").Result;
+            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6Ld7rRcaAAAAAKM-dpLo52R45_PGLtS5eISRiIJ_&response={gRecaptcharesponse}").Result;
 
             if (res.StatusCode != HttpStatusCode.OK)
                 return false;

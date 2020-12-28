@@ -14,5 +14,11 @@ namespace Task_3.Controllers
 
             return View();
         }
+        public ActionResult ViewPage1()
+        {
+            ViewBag.Title = "Home Page";
+
+            return View();
+        }
     }
 }
