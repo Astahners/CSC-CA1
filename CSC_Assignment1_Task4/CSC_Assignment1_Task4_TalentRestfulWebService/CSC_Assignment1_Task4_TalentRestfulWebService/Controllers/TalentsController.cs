@@ -5,37 +5,103 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Dependencies;
+using Unity;
 
 namespace CSC_Assignment1_Task4_TalentRestfulWebService.Controllers
 {
-    //refactoring TalentRepository into an interface
-    public interface ITalentRepository
-    {
-        IEnumerable<Talent> GetTalents();
-        Talent Get(int id);
-        void Add(Talent talent);
-    }
-
     public class TalentsController : ApiController
     {
-        //provide ITalentRepository as a constructor parameter
-        private ITalentRepository _repository;
+        //not the best approach to call the repository
+        static readonly TalentRepository repository = new TalentRepository();
 
-        public TalentsController(ITalentRepository repository)
+        ////provide ITalentRepository as a constructor parameter
+        //private ITalentRepository _repository;
+
+        //public TalentsController(ITalentRepository repository)
+        //{
+        //    _repository = repository;
+        //}
+
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+
+        //GET all talents
+        [Route("api/talents")]
+        public IEnumerable<Talent> GetAllTalents()
         {
-            _repository = repository;
+            return repository.GetAll();
+        }
+
+        //GET talent by id
+        [Route("api/talents/{id:int}")]
+        public Talent GetTalent(int id)
+        {
+            Talent item = repository.Get(id);
+            if (item == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return item;
         }
     }
 
-    //Web API Dependency Resolver
-    public interface IDependencyResolver : IDependencyScope, IDisposable
-    {
-        IDependencyScope BeginScope();
-    }
+    ////Dependency Injection using Unity
+    //public class UnityResolver : IDependencyResolver
+    //{
+    //    protected IUnityContainer container;
 
-    public interface IDependencyScope : IDisposable
-    {
-        object GetService(Type serviceType);
-        IEnumerable<object> GetServices(Type serviceType);
-    }
+    //    public UnityResolver(IUnityContainer container)
+    //    {
+    //        if (container == null)
+    //        {
+    //            throw new ArgumentNullException(nameof(container));
+    //        }
+    //        this.container = container;
+    //    }
+
+    //    public object GetService(Type serviceType)
+    //    {
+    //        try
+    //        {
+    //            return container.Resolve(serviceType);
+    //        }
+    //        catch (ResolutionFailedException exception)
+    //        {
+    //            throw new InvalidOperationException(
+    //                $"Unable to resolve service for type {serviceType}.",
+    //                exception);
+    //        }
+    //    }
+
+    //    public IEnumerable<object> GetServices(Type serviceType)
+    //    {
+    //        try
+    //        {
+    //            return container.ResolveAll(serviceType);
+    //        }
+    //        catch (ResolutionFailedException exception)
+    //        {
+    //            throw new InvalidOperationException(
+    //                $"Unable to resolve service for type {serviceType}.",
+    //                exception);
+    //        }
+    //    }
+
+    //    public IDependencyScope BeginScope()
+    //    {
+    //        var child = container.CreateChildContainer();
+    //        return new UnityResolver(child);
+    //    }
+
+    //    public void Dispose()
+    //    {
+    //        Dispose(true);
+    //    }
+
+    //    protected virtual void Dispose(bool disposing)
+    //    {
+    //        container.Dispose();
+    //    }
+    //}
 }
