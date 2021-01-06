@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Daily Checkout</title>
+    <meta name="description" content="Stripe Daily Recurring Payments" />
+</head>
+
+<body>
+    <div class="togethere-background"></div>
+    <div class="sr-root">
+        <div class="sr-main">
+            <header class="sr-header">
+                <div class="sr-header__logo"></div>
+            </header>
+            <div class="sr-payment-summary completed-view">
+                <h1>Your payment succeeded</h1>
+                <h4>
+                    View CheckoutSession response:
+                </h4>
+            </div>
+            <div class="completed-view-section">
+                <pre>
+
+            </pre>
+                <button onclick="window.location.href = '/';">Back to Start</button>
+
+                <form id="manage-billing-form">
+                    <button>Manage Billing</button>
+                </form>
+            </div>
+        </div>
+        <div class="sr-content">
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts{
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get("session_id");
+        let customerId;
+
+        if (sessionId) {
+            fetch("/checkout-session?sessionId=" + sessionId)
+                .then(function (result) {
+                    return result.json();
+                })
+                .then(function (session) {
+                    //use Database-as-a-service to store customerId
+                    customerId = session.customer;
+
+                    var sessionJSON = JSON.stringify(session, null, 2);
+                    document.querySelector("pre").textContent = sessionJSON;
+                })
+                .catch(function (e) {
+                    console.log('Error when fetching Checkout session', e);
+                });
+        }
+
+        const manageBillingForm = document.querySelector('#manage-billing-form');
+        manageBillingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            fetch('/customer-portal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sessionId: sessionId
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    window.location.href = data.url;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+}
