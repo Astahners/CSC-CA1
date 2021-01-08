@@ -23,7 +23,7 @@ namespace CSC_Assignment1_Task6
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseWebRoot(Environment.GetEnvironmentVariable("STATIC_DIR"));
+                    //webBuilder.UseWebRoot(Environment.GetEnvironmentVariable("STATIC_DIR"));
                 });
         }
             

@@ -40,8 +40,8 @@ namespace CSC_Assignment1_Task6.Controllers
         {
             var options = new SessionCreateOptions
             {
-                SuccessUrl = $"{this.options.Value.Domain}/Home/Success.cshtml?session_id={{CHECKOUT_SESSION_ID}}",
-                CancelUrl = $"{this.options.Value.Domain}/Home/Cancel.cshtml",
+                SuccessUrl = $"{this.options.Value.Domain}/Home/Success?session_id={{CHECKOUT_SESSION_ID}}",
+                CancelUrl = $"{this.options.Value.Domain}/Home/Cancel",
                 PaymentMethodTypes = new List<string>
                 {
                     "card",
@@ -77,31 +77,6 @@ namespace CSC_Assignment1_Task6.Controllers
                 });
             }
         }
-
-        //[HttpGet("products")]
-        //public IActionResult GetProducts()
-        //{
-        //    List<StoreProduct> storeProductList = new List<StoreProduct>();
-        //    var options = new PriceListOptions { Limit = 100 };
-        //    var priceServ = new PriceService();
-        //    StripeList<Price> prices = priceServ.List(options);
-
-        //    foreach (Price price in prices)
-        //    {
-        //        StoreProduct item = new StoreProduct();
-        //        item.Price = (long)price.UnitAmount;
-        //        item.ProductId = price.ProductId;
-        //        item.PriceId = price.Id;
-        //        var productServ = new ProductService();
-
-        //        Product currentProduct = productServ.Get(price.ProductId);
-        //        item.Name = currentProduct.Name;
-        //        item.Description = currentProduct.Description;
-        //        storeProductList.Add(item);
-        //    }
-        //    Thread.Sleep(2500);
-        //    return Ok(storeProductList);
-        //}
 
         [HttpGet("checkout-session")]
         public async Task<IActionResult> CheckoutSession(string sessionId)
@@ -156,7 +131,7 @@ namespace CSC_Assignment1_Task6.Controllers
 
             if (stripeEvent.Type == "checkout.session.completed")
             {
-                var session = stripeEvent.Data.Object as Stripe.Checkout.Session;
+                var session = stripeEvent.Data.Object as Session;
                 Console.WriteLine($"Session ID: {session.Id}");
             }
 

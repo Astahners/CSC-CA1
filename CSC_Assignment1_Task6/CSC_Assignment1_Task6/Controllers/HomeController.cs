@@ -23,6 +23,16 @@ namespace CSC_Assignment1_Task6.Controllers
             return View();
         }
 
+        public IActionResult Success()
+        {
+            return View();
+        }
+
+        public IActionResult Cancel()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
