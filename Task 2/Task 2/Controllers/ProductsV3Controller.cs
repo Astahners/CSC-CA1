@@ -33,7 +33,7 @@ namespace Task_2.Controllers
         //id should be greater than 2.
         //http://localhost:9000/api/v3/products/1 404 error code
         [HttpGet]
-        [Route("api/v3/products/{id:int:min(2)}", Name = "getProductByIdv3")]
+        [Route("api/v3/products/{id}", Name = "getProductByIdv3")]
         public HttpResponseMessage retrieveProductfromRepository(int id)
         {
             Product item = repository.Get(id);
