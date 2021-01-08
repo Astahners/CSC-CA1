@@ -11,7 +11,7 @@
         function submit(e) {
             e.preventDefault();
             document.getElementById("demo-form").submit();
-            console.log("submit method")
+            console.log("submit method");
             console.log("Passed reCaptcha v3");
             grecaptcha.ready(function () {
                 grecaptcha.execute('6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p', { action: 'homepage' }).then(function (token) {
