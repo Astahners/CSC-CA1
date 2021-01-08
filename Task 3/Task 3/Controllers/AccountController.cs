@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Task_3.Models;
 using Task_3.Providers;
 using Task_3.Results;
+using Task_3.Services;
 
 namespace Task_3.Controllers
 {
@@ -326,6 +327,13 @@ namespace Task_3.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            CaptchaService capService = new CaptchaService();
+            bool human = capService.VerifyResponse(model.Captcha);
+            if (!human)
+            {
+                return BadRequest("reCaptcha Failed");
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };

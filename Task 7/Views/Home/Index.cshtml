@@ -77,12 +77,9 @@
         display: none;
         width: 20vw;
     }
-
 </style>
 
 <script>
-    //var clarifaiApiKey = 'c191a51fc9764331af16fc0bf4995dd2';
-    //var workflowId = 'task7workflowID';
     var clarifaiApiKey = 'cef4b3e4d5794a3cb7a99105bb367707';
     var workflowId = 'tests3';
 
@@ -103,8 +100,6 @@
             imageData = imageData.replace(/^data:image\/(.*);base64,/, '');
             predictFromWorkflow(imageData);
         }, false);
-
-        
 
         if (file) {
             reader.readAsDataURL(file);
@@ -130,5 +125,4 @@
             }
         );
     }
-
 </script>
