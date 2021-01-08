@@ -1,0 +1,81 @@
+﻿<div class="row">
+    <div class="col">
+        <form>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Choose Photo</label>
+                <input class="form-control" type="file" id="formFile" accept="image/jpeg, image/png">
+            </div>
+            <div class="mb-3">
+                <input style="color:grey" class="form-control" type="submit" id="submitPhoto">
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Shortened Link:</h5>
+                <div class="loader" id="spinner"></div>
+                <p class="card-text" id="result"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        .loader {
+          border: 16px solid #f3f3f3; /* Light grey */
+          border-top: 16px solid #3498db; /* Blue */
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
+        }
+
+        @@keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        $(() => {
+            $('#spinner').hide();
+            $("#submitPhoto").click((e) => {
+                e.preventDefault();
+
+                let fileList = $("#formFile")[0].files;
+                let file = fileList[0];
+                let $result = $("#result")
+                if (file !== undefined) {
+                    let formData = new FormData();
+                    formData.append("photo", file);
+
+                    $.ajax({
+                        url: "https://localhost:44335/api/upload",
+                        method: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: formData,
+                        beforeSend: function () {
+                            $('#spinner').show();
+                            $result.text("");
+                        },
+                        complete: function () {
+                            $('#spinner').hide();
+                        },
+                    }).done((data) => {
+                        console.log(data)
+                        $result.html(`<a href=${data.shortlink} target="_blank">${data.shortlink}</a>`);
+                    }).fail((data) => {
+                        console.log(data)
+                        $result.text(data.responseJSON.Message)
+                    })
+                } else {
+                    $result.text("No file was selected.")
+                }
+
+
+            })
+        })
+    </script>
+}
