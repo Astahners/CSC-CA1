@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration with reCaptcha v3</title>
+</head>
+
+<body>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p"></script>
+    <script>
+        function submit(e) {
+            e.preventDefault();
+            document.getElementById("demo-form").submit();
+            console.log("submit method");
+            console.log("Passed reCaptcha v3");
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Ld3HBAaAAAAAIfeNo2oG81hyZLaG6UXSlRuam7p', { action: 'homepage' }).then(function (token) {
+                    document.getElementById("foo").value = token;
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/recaptcha',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: recaptchaData
+                    }).done(function (data) {
+                        console.log(data);
+                    })
+                });
+            });
+        }
+    </script>
+    <form onSubmit="submit()" id="demo-form">
+        <h3>Register</h3>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" />
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input class="form-control" type="password"/>
+        </div>
+        <div class="form-group">
+            <button class="btn" type="button">Register</button>
+        </div>
+        <input type="hidden" id="foo" name="foo" />
+    </form>
+</body>
+</html>
