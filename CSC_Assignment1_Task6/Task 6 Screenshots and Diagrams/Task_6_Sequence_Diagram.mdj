@@ -691,17 +691,17 @@
 												"$ref": "AAAAAAF24U76LzUP7uA="
 											},
 											"font": "Arial;13;0",
-											"left": 350,
-											"top": 136,
-											"width": 157.51708984375,
+											"left": 337,
+											"top": 135,
+											"width": 171.970703125,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": -4.171970215408548,
+											"distance": 11.661903789690601,
 											"hostEdge": {
 												"$ref": "AAAAAAF24U76MDUQUGY="
 											},
 											"edgePosition": 1,
-											"text": "2 : Call Create Session API"
+											"text": "2 : Create Check Out Session"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -802,17 +802,17 @@
 												"$ref": "AAAAAAF24VBs1TUomvc="
 											},
 											"font": "Arial;13;0",
-											"left": 496,
+											"left": 499,
 											"top": 146,
 											"width": 293.3505859375,
 											"height": 13,
-											"alpha": 0.6947378663608392,
-											"distance": 15.620499351813308,
+											"alpha": 0.5880022958554019,
+											"distance": 18.027756377319946,
 											"hostEdge": {
 												"$ref": "AAAAAAF24VBs1TUpDB0="
 											},
 											"edgePosition": 1,
-											"text": "3 : [HttpPost] Create Check Out Session"
+											"text": "3 : Send Price ID"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1137,12 +1137,12 @@
 												"$ref": "AAAAAAF24VLpXjWKNrs="
 											},
 											"font": "Arial;13;0",
-											"left": 83,
-											"top": 288,
+											"left": 82,
+											"top": 251,
 											"width": 250.00244140625,
 											"height": 13,
-											"alpha": -2.2655342751226577,
-											"distance": 23.430749027719962,
+											"alpha": -3.9857469500478775,
+											"distance": 24.08318915758459,
 											"hostEdge": {
 												"$ref": "AAAAAAF24VLpXjWLiyk="
 											},
@@ -1248,9 +1248,9 @@
 												"$ref": "AAAAAAF24VYZIjWtfto="
 											},
 											"font": "Arial;13;0",
-											"left": 379,
+											"left": 376,
 											"top": 277,
-											"width": 98.2744140625,
+											"width": 105.50439453125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1426,7 +1426,7 @@
 											"left": 731,
 											"top": 315,
 											"width": 14,
-											"height": 29
+											"height": 70
 										}
 									],
 									"font": "Arial;13;0",
@@ -1534,7 +1534,7 @@
 												"$ref": "AAAAAAF24VhZ2zXdCNk="
 											},
 											"font": "Arial;13;0",
-											"left": 731,
+											"left": 738,
 											"top": 348,
 											"width": 14,
 											"height": 29
@@ -1547,7 +1547,7 @@
 									"tail": {
 										"$ref": "AAAAAAF24UvbADSZ0+c="
 									},
-									"points": "744:328;774:328;774:348;744:348",
+									"points": "744:328;774:328;774:348;751:348",
 									"nameLabel": {
 										"$ref": "AAAAAAF24VhZ2zXfiC0="
 									},
@@ -1581,7 +1581,7 @@
 												"$ref": "AAAAAAF24WYAXjYZS1U="
 											},
 											"font": "Arial;13;0",
-											"left": 562,
+											"left": 566,
 											"top": 368,
 											"width": 126.46435546875,
 											"height": 13,
@@ -1604,7 +1604,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 626,
+											"left": 630,
 											"top": 379,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -1625,7 +1625,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 627,
+											"left": 631,
 											"top": 344,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -1659,7 +1659,7 @@
 									"tail": {
 										"$ref": "AAAAAAF24UvbADSZ0+c="
 									},
-									"points": "731:360;524:360",
+									"points": "738:360;524:360",
 									"nameLabel": {
 										"$ref": "AAAAAAF24WYAXjYbsHE="
 									},
@@ -1693,9 +1693,9 @@
 												"$ref": "AAAAAAF24WixvTa2rxI="
 											},
 											"font": "Arial;13;0",
-											"left": 371,
+											"left": 370,
 											"top": 380,
-											"width": 113.92138671875,
+											"width": 114.88623046875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1809,7 +1809,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF24UmFxTQ4ILo="
 							},
-							"name": "Call Create Session API",
+							"name": "Create Check Out Session",
 							"source": {
 								"$ref": "AAAAAAF24Ur4wzRw2xI="
 							},
@@ -1823,7 +1823,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF24UmFxTQ4ILo="
 							},
-							"name": "[HttpPost] Create Check Out Session",
+							"name": "Send Price ID",
 							"source": {
 								"$ref": "AAAAAAF24U6rETTt11s="
 							},
@@ -2026,7 +2026,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF24UmFxDQ3h0o="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2034,7 +2035,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF24UmFxDQ3h0o="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2042,7 +2044,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF24UmFxDQ3h0o="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				}
 			]
 		}

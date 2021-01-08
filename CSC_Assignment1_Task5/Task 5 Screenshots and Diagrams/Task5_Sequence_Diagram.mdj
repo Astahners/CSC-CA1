@@ -608,7 +608,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF24D6p3WaOmSU="
 									},
-									"name": "TalentsSearch",
+									"name": "Task4",
 									"ownedViews": [
 										{
 											"_type": "UMLFrameView",
@@ -629,9 +629,9 @@
 													"font": "Arial;13;0",
 													"left": 238.97900390625,
 													"top": 13,
-													"width": 83.3798828125,
+													"width": 34.9599609375,
 													"height": 13,
-													"text": "TalentsSearch"
+													"text": "Task4"
 												},
 												{
 													"_type": "LabelView",
@@ -1969,7 +1969,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF24Opmcmj9XSQ="
 									},
-									"name": "UploadImage",
+									"name": "Task5",
 									"ownedViews": [
 										{
 											"_type": "UMLFrameView",
@@ -1990,9 +1990,9 @@
 													"font": "Arial;13;0",
 													"left": 126.97900390625,
 													"top": 13,
-													"width": 78.3271484375,
+													"width": 34.9599609375,
 													"height": 13,
-													"text": "UploadImage"
+													"text": "Task5"
 												},
 												{
 													"_type": "LabelView",
@@ -2964,7 +2964,7 @@
 														"$ref": "AAAAAAF24VmjQWtarrg="
 													},
 													"edgePosition": 1,
-													"text": "4 : Submit Image to bit.ly"
+													"text": "4 : Submit URL to bit.ly"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3321,7 +3321,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF24Opmcmj9XSQ="
 									},
-									"name": "Submit Image to bit.ly",
+									"name": "Submit URL to bit.ly",
 									"source": {
 										"$ref": "AAAAAAF24PCpRWqDwVk="
 									},
