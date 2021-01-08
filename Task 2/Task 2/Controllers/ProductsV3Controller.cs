@@ -34,14 +34,16 @@ namespace Task_2.Controllers
         //http://localhost:9000/api/v3/products/1 404 error code
         [HttpGet]
         [Route("api/v3/products/{id:int:min(2)}", Name = "getProductByIdv3")]
-        public Product retrieveProductfromRepository(int id)
+        public HttpResponseMessage retrieveProductfromRepository(int id)
         {
             Product item = repository.Get(id);
+
             if (item == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return Request.CreateResponse<String>(HttpStatusCode.BadRequest, "Item not found.") ;
             }
-            return item;
+            var response = Request.CreateResponse<Product>(HttpStatusCode.OK, item);
+            return response;
         }
 
         [HttpGet]
