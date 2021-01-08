@@ -27,6 +27,7 @@ namespace CSC_Assignment1_Task4_TalentRestfulWebService.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
 
         //GET all talents
+        [Authorize]
         [Route("api/talents")]
         public IEnumerable<Talent> GetAllTalents()
         {
@@ -34,6 +35,7 @@ namespace CSC_Assignment1_Task4_TalentRestfulWebService.Controllers
         }
 
         //GET talent by id
+        [Authorize]
         [Route("api/talents/{id:int}")]
         public Talent GetTalent(int id)
         {

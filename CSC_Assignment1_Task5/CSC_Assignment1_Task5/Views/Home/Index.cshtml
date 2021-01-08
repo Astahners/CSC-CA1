@@ -66,8 +66,9 @@
                     }).done((data) => {
                         console.log(data)
                         $result.html(`<a href=${data.shortlink} target="_blank">${data.shortlink}</a>`);
-                    }).fail(() => {
-                        $result.text("Some error occured.")
+                    }).fail((data) => {
+                        console.log(data)
+                        $result.text(data.responseJSON.Message)
                     })
                 } else {
                     $result.text("No file was selected.")

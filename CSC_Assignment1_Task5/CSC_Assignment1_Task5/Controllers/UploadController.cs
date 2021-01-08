@@ -4,6 +4,7 @@ using Amazon.S3;
 using Amazon.S3.Transfer;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,20 @@ namespace CSC_Assignment1_Task5.Controllers
 {
     public class UploadController : ApiController
     {
+        public static bool IsValidImage(byte[] bytes)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(bytes))
+                    Image.FromStream(ms);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            return true;
+        }
+
         [Route("api/upload")]
         [HttpPost]
         public async Task<HttpResponseMessage> PostFormData()
@@ -42,6 +57,10 @@ namespace CSC_Assignment1_Task5.Controllers
                 }
 
                 byte[] photos = files[0];
+                if (!IsValidImage(photos))
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, "File selected is not an image!");
+                }
                 Stream content = new MemoryStream(photos);
 
                 string awsAccessKeyId = "";
